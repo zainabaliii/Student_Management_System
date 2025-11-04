@@ -1,0 +1,22 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build project",
+      "type": "shell",
+      "command": "g++",
+      "args": [
+        "src/*.cpp",
+        "-o",
+        "main.exe",
+        "-g"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gcc"],
+      "detail": "Build C++ project using MinGW g++"
+    }
+  ]
+}
