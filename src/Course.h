@@ -46,7 +46,7 @@ public:
     std::string getCode() const { return courseCode; }
     std::string getName() const { return courseName; }
 
-    // 🆕 expose enrolled list for FileManager
+    // expose enrolled list for FileManager
     const std::vector<Student*>& getEnrolledStudents() const { return enrolled; }
 };
 

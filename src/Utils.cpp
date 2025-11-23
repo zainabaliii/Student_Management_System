@@ -44,12 +44,12 @@ void addStudent(vector<Student>& students) {
 
     // check for duplicate ID
     for (const auto& s : students) if (s.getID() == id) {
-        cout << "❌ A student with this ID already exists.\n";
+        cout << "A student with this ID already exists.\n";
         return;
     }
 
     students.emplace_back(name, id, contact, cls, sec);
-    cout << "✅ Student added successfully.\n";
+    cout << "Student added successfully.\n";
 }
 
 void viewAll(const vector<Student>& students) {
@@ -71,11 +71,11 @@ void recordAttendance(vector<Student>& students) {
     for (auto& s : students) {
         if (s.getID() == id) {
             s.addAttendance(date, (status == 'P' || status == 'p'));
-            cout << "✅ Attendance recorded.\n";
+            cout << "Attendance recorded.\n";
             return;
         }
     }
-    cout << "❌ Student not found.\n";
+    cout << "Student not found.\n";
 }
 
 void addGrade(vector<Student>& students) {
@@ -88,11 +88,11 @@ void addGrade(vector<Student>& students) {
     for (auto& s : students) {
         if (s.getID() == id) {
             s.addGrade(subject, static_cast<float>(marks));
-            cout << "✅ Grade added.\n";
+            cout << "Grade added.\n";
             return;
         }
     }
-    cout << "❌ Student not found.\n";
+    cout << "Student not found.\n";
 }
 
 void updateStudent(vector<Student>& students) {
@@ -111,11 +111,11 @@ void updateStudent(vector<Student>& students) {
             cout << "Enter new Section (leave blank to keep current): ";
             getline(cin, newSection);
             s.setBasicInfo(newName, newContact, newClass, newSection);
-            cout << "✅ Student updated.\n";
+            cout << "Student updated.\n";
             return;
         }
     }
-    cout << "❌ Student not found.\n";
+    cout << "Student not found.\n";
 }
 
 void deleteStudent(vector<Student>& students, vector<Course>& courses) {
@@ -127,9 +127,9 @@ void deleteStudent(vector<Student>& students, vector<Course>& courses) {
         students.erase(it, students.end());
         // remove from all courses
         for (auto& c : courses) c.removeStudentByID(id);
-        cout << "✅ Student deleted successfully.\n";
+        cout << "Student deleted successfully.\n";
     } else {
-        cout << "❌ Student not found.\n";
+        cout << "Student not found.\n";
     }
 }
 
@@ -149,7 +149,7 @@ void searchStudent(const vector<Student>& students) {
             found = true;
         }
     }
-    if (!found) cout << "❌ No matching student found.\n";
+    if (!found) cout << "No matching student found.\n";
 }
 
 void showAnalytics(const vector<Student>& students) {
@@ -177,7 +177,7 @@ void exportReport(const vector<Student>& students, const string& filename) {
             << " | Attendance: " << s.attendancePercent() << "%\n";
     }
     out.close();
-    cout << "✅ Report exported to " << filename << "\n";
+    cout << "Report exported to " << filename << "\n";
 }
 
 void manageCourses(vector<Student>& students, vector<Course>& courses) {
@@ -191,7 +191,7 @@ void manageCourses(vector<Student>& students, vector<Course>& courses) {
             cout << "Course Code: "; cin >> code; cin.ignore();
             cout << "Course Name: "; getline(cin, name);
             courses.emplace_back(code, name);
-            cout << "✅ Course created.\n";
+            cout << "Course created.\n";
         } else if (choice == 2) {
             if (courses.empty()) cout << "No courses exist.\n";
             else {
@@ -208,7 +208,7 @@ void manageCourses(vector<Student>& students, vector<Course>& courses) {
             for (auto& s : students) {
                 if (s.getID() == sid) {
                     courses[idx-1].addStudent(&s);
-                    cout << "✅ Student enrolled.\n";
+                    cout << "Student enrolled.\n";
                     ok = true; break;
                 }
             }
@@ -220,7 +220,7 @@ void manageCourses(vector<Student>& students, vector<Course>& courses) {
             if (idx < 1 || idx > (int)courses.size()) { cout << "Invalid index.\n"; continue; }
             cout << "Enter Student ID to remove: "; cin >> sid;
             courses[idx-1].removeStudentByID(sid);
-            cout << "✅ If student was enrolled, they have been removed from that course.\n";
+            cout << "If student was enrolled, they have been removed from that course.\n";
         } else if (choice == 5) {
             if (courses.empty()) { cout << "No courses.\n"; continue; }
             int idx;

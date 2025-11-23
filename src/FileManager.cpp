@@ -8,7 +8,7 @@
 FileManager* FileManager::instance = nullptr;
 std::mutex FileManager::instMutex;
 
-// ✅ Singleton instance getter
+// Singleton instance getter
 FileManager* FileManager::getInstance() {
     std::lock_guard<std::mutex> lock(instMutex);
     if (instance == nullptr)
@@ -16,7 +16,7 @@ FileManager* FileManager::getInstance() {
     return instance;
 }
 
-// ✅ Save all student data
+// Save all student data
 void FileManager::saveAll(const std::vector<Student>& students,
                           const std::string& studentsFile,
                           const std::string& attendanceFile,
@@ -43,10 +43,10 @@ void FileManager::saveAll(const std::vector<Student>& students,
     fs.close();
     fa.close();
     fg.close();
-    std::cout << "✅ All student data saved successfully.\n";
+    std::cout << "All student data saved successfully.\n";
 }
 
-// ✅ Load all student data
+// Load all student data
 void FileManager::loadAll(std::vector<Student>& students,
                           const std::string& studentsFile,
                           const std::string& attendanceFile,
@@ -103,10 +103,10 @@ void FileManager::loadAll(std::vector<Student>& students,
         }
     }
 
-    std::cout << "📗 Student data loaded successfully (" << students.size() << ").\n";
+    std::cout << "Student data loaded successfully (" << students.size() << ").\n";
 }
 
-// ✅ Save courses
+// Save courses
 void FileManager::saveCourses(const std::vector<Course>& courses, const std::string& filename) {
     std::ofstream fc(filename);
     if (!fc) {
@@ -124,10 +124,10 @@ void FileManager::saveCourses(const std::vector<Course>& courses, const std::str
         fc << "\n";
     }
     fc.close();
-    std::cout << "📘 Courses saved successfully.\n";
+    std::cout << "Courses saved successfully.\n";
 }
 
-// ✅ Load courses
+// Load courses
 void FileManager::loadCourses(std::vector<Course>& courses,
                               const std::string& filename,
                               std::vector<Student>& students) {
@@ -156,5 +156,5 @@ void FileManager::loadCourses(std::vector<Course>& courses,
         courses.push_back(course);
     }
     fc.close();
-    std::cout << "📙 Courses loaded successfully (" << courses.size() << ").\n";
+    std::cout << "Courses loaded successfully (" << courses.size() << ").\n";
 }
